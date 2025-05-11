@@ -42,7 +42,15 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: Clean previous builds
+      - name: Clean previous builds (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          # Remove both build and dist directories
+          Remove-Item -Path build,dist -Recurse -Force
+
+      - name: Clean previous builds (Unix)
+        if: runner.os != 'Windows'
         run: |
           rm -rf build/ dist/
 
@@ -67,7 +75,6 @@ jobs:
         with:
           name: TestReportGenerator-windows
           path: dist/main.exe
-          # retention-days: 30  # optional override
 
       - name: Upload Linux Binary
         if: matrix.os == 'ubuntu-latest'
