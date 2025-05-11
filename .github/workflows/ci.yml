@@ -47,14 +47,14 @@ jobs:
 
       - name: Upload Windows EXE
         if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@6f2e6ca1795655b8c557950dcd7e9a118893cea2
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: TestReportGenerator-windows
           path: dist/main.exe
 
       - name: Upload Linux Binary
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@6f2e6ca1795655b8c557950dcd7e9a118893cea2
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: TestReportGenerator-linux
           path: dist/main
