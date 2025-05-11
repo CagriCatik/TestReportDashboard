@@ -1,0 +1,23 @@
+name: OWASP Dependency-Check
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  dependency-check:
+    name: Dependency Vulnerability Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Run dependency-check
+        uses: OWASP/dependency-check-action@v6
+        with:
+          project: TestReportGenerator
+          scan: '**/*.py'
+          format: 'ALL'
