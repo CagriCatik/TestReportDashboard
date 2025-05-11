@@ -31,6 +31,7 @@ jobs:
           pip install pyinstaller
 
       - name: Build executable
+        shell: bash
         run: |
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
             pyinstaller --onefile \
@@ -46,14 +47,14 @@ jobs:
 
       - name: Upload Windows EXE
         if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@6f2e6ca1795655b8c557950dcd7e9a118893cea2
         with:
           name: TestReportGenerator-windows
           path: dist/main.exe
 
       - name: Upload Linux Binary
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@6f2e6ca1795655b8c557950dcd7e9a118893cea2
         with:
           name: TestReportGenerator-linux
           path: dist/main
@@ -92,7 +93,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'python' ]
+        language: ['python']
     steps:
       - name: Check out repo
         uses: actions/checkout@v3
