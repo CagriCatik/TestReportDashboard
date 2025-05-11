@@ -42,17 +42,17 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: Clean previous builds (Windows)
-        if: runner.os == 'Windows'
-        shell: pwsh
+      - name: Clean previous builds
+        # Use bash to dispatch to the right shell
+        shell: bash
         run: |
-          # Remove both build and dist directories
-          Remove-Item -Path build,dist -Recurse -Force
-
-      - name: Clean previous builds (Unix)
-        if: runner.os != 'Windows'
-        run: |
-          rm -rf build/ dist/
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            # PowerShell clean, ignoring missing dirs
+            pwsh -Command "Remove-Item -Path build,dist -Recurse -Force -ErrorAction SilentlyContinue"
+          else
+            # Bash clean
+            rm -rf build/ dist/
+          fi
 
       - name: Build executable
         shell: bash
