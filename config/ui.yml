@@ -1,0 +1,46 @@
+# ui.yaml
+
+window:
+  title: "Test Report Generator"
+  geometry: [100, 100, 1000, 700]    # [x, y, width, height]
+
+date:
+  format: "yyyy-MM-dd"
+  default_to_today: true
+
+menu:
+  File:
+    - { text: "Load Excel",        handler: load_excel }
+    - { text: "Load Session",      handler: load_session }
+    - { text: "Save Session",      handler: save_session }
+
+fields:
+  tester:             "Tester:"
+  date:               "Date:"
+  software_version:   "Software Version:"
+  hardware_version:   "Hardware Version:"
+  arxml_version:      "ARXML Version:"
+  cdd_version:        "CDD Version:"
+  pdf_name:           "PDF Name:"
+
+status:
+  values: ["Pass", "Fail", "Not Tested"]
+  filters_default:   [true, true, true]
+
+summary_labels:
+  total:        "Total: {total}"
+  pass:         "Pass: {count} ({pct})"
+  fail:         "Fail: {count} ({pct})"
+  not_tested:   "Not Tested: {count} ({pct})"
+
+buttons:
+  generate_pdf:  "Generate PDF Report"
+
+
+table:
+  default_section_size: 120
+  column_widths:
+    Test Case ID:             175
+    Test Case Description:    300
+    Test Status:              100
+    Comments:                 100
