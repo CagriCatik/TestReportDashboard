@@ -1,14 +1,11 @@
 # controller/main_controller.py
-import os
+
 from pathlib import Path
 from PySide6.QtWidgets import QFileDialog
-
 from model.report import TestReport
 from model.session import SessionManager
 from view.widgets import MainWindow
 from reports.pdf_builder import build_pdf
-from model.report import TestStatus
-
 
 class MainController:
     # Point at ~/.config/session.json
@@ -32,7 +29,10 @@ class MainController:
         self.window.show()
 
     def load_excel(self):
-        path, _ = QFileDialog.getOpenFileName(self.window, "Open Excel", "", "Excel Files (*.xlsx *.xls)")
+        path, _ = QFileDialog.getOpenFileName(self.window, 
+                                              "Open Excel", 
+                                              "", 
+                                              "Excel Files (*.xlsx *.xls)")
         if not path:
             return
         try:

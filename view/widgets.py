@@ -2,7 +2,7 @@
 
 from PySide6.QtWidgets import (
     QMainWindow, QWidget, QTableView, QPushButton, QLineEdit, QDateEdit,
-    QCheckBox, QLabel, QFileDialog, QHBoxLayout, QVBoxLayout, QFormLayout,
+    QCheckBox, QLabel, QHBoxLayout, QVBoxLayout, QFormLayout,
     QMessageBox, QStyledItemDelegate, QComboBox, QHeaderView
 )
 from PySide6.QtCore import Qt, QDate, QAbstractTableModel, QModelIndex

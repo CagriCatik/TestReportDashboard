@@ -40,12 +40,10 @@ def _get_image(source, max_w, max_h):
     img._restrictSize(max_w, max_h)
     return img
 
-
 def _styled_table(data, col_widths, style_cmds):
     table = Table(data, col_widths)
     table.setStyle(TableStyle(style_cmds))
     return table
-
 
 def draw_footer(canvas, doc):
     canvas.saveState()
@@ -53,7 +51,6 @@ def draw_footer(canvas, doc):
     w, _ = letter
     canvas.drawCentredString(w/2.0, 0.5*inch, f"Page {doc.page}")
     canvas.restoreState()
-
 
 def draw_header(canvas, doc):
     canvas.saveState()

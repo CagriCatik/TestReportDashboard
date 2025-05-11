@@ -42,7 +42,10 @@ class TestReport:
                     break
         # Validate presence
         if len(mapping) < len(required):
-            missing = set(['Test Case ID', 'Test Case Description', 'Test Status', 'Comments']) - set(mapping.values())
+            missing = set(['Test Case ID', 
+                           'Test Case Description', 
+                           'Test Status', 
+                           'Comments']) - set(mapping.values())
             raise ValueError(f"Missing required columns: {', '.join(missing)}")
         # Select and rename
         self.df = df[list(mapping.keys())].rename(columns=mapping)
